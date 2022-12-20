@@ -1,12 +1,15 @@
 <template>
-  <main>Home page</main>
-  <v-counter />
+  <main>
+    <div v-if="authStore.isAuthenticated">
+      User name is: {{ authStore.user.name }}
+    </div>
+    <v-counter />
+  </main>
 </template>
 
 <script setup>
-import { useCounterStore } from "@/stores/counter";
+import { useAuthStore } from "@/stores/auth";
 import vCounter from "@/components/Counter.vue";
 
-const store = useCounterStore();
-console.log(store.count);
+const authStore = useAuthStore();
 </script>
