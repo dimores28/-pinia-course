@@ -4,7 +4,8 @@
     <nav>
       <router-link to="/">Home</router-link>
       <router-link to="/about">About</router-link>
-      <button @click="logout">Logout</button>
+      <button @click="logout" v-if="authStore.isAuthenticated">Logout</button>
+      <button @click="login" v-else>Login</button>
     </nav>
   </div>
   <router-view></router-view>
@@ -18,6 +19,18 @@ function logout() {
   authStore.$patch((state) => {
     (state.isAuthenticated = false), (state.user = {});
   });
+}
+
+function login() {
+  // authStore.$patch((state) => {
+  //   (state.isAuthenticated = true),
+  //     (state.user = {
+  //       name: "Sarthak",
+  //       email: "arthak@bitfumes.com"
+  //     });
+  // });
+
+  authStore.$reset();
 }
 </script>
 
