@@ -7,5 +7,15 @@ export const useAuthStore = defineStore("auth", {
             name: "Sarthak",
             email: "arthak@bitfumes.com"
         }
-    })
+    }),
+    actions: {
+        logout() {
+            this.$patch((state) => {
+                (state.isAuthenticated = false), (state.user = {});
+              });
+        },
+        login() {
+            this.$reset();
+        }
+    }
 });
