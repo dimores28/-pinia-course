@@ -4,8 +4,10 @@
     <nav>
       <router-link to="/">Home</router-link>
       <router-link to="/about">About</router-link>
-      <button @click="logout" v-if="authStore.isAuthenticated">Logout</button>
-      <button @click="login" v-else>Login</button>
+      <button @click="authStore.logout" v-if="authStore.isAuthenticated">
+        Logout
+      </button>
+      <button @click="authStore.login" v-else>Login</button>
     </nav>
   </div>
   <router-view></router-view>
@@ -15,23 +17,23 @@
 import { useAuthStore } from "@/stores/auth";
 const authStore = useAuthStore();
 
-function logout() {
-  authStore.$patch((state) => {
-    (state.isAuthenticated = false), (state.user = {});
-  });
-}
+// function logout() {
+//   authStore.$patch((state) => {
+//     (state.isAuthenticated = false), (state.user = {});
+//   });
+// }
 
-function login() {
-  // authStore.$patch((state) => {
-  //   (state.isAuthenticated = true),
-  //     (state.user = {
-  //       name: "Sarthak",
-  //       email: "arthak@bitfumes.com"
-  //     });
-  // });
+// function login() {
+//   // authStore.$patch((state) => {
+//   //   (state.isAuthenticated = true),
+//   //     (state.user = {
+//   //       name: "Sarthak",
+//   //       email: "arthak@bitfumes.com"
+//   //     });
+//   // });
 
-  authStore.$reset();
-}
+//   authStore.$reset();
+// }
 </script>
 
 <script>

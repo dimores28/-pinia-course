@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div v-if="isAuthenticated">User name is: {{ user.name }}</div>
+    <div v-if="isAuthenticated">User name is: {{ fullname }}</div>
     <v-counter />
   </main>
 </template>
@@ -12,5 +12,5 @@ import vCounter from "@/components/Counter.vue";
 
 const authStore = useAuthStore();
 
-const { isAuthenticated, user } = storeToRefs(authStore);
+const { isAuthenticated, fullname } = storeToRefs(authStore);
 </script>
